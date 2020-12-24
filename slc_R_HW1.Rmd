@@ -1,0 +1,88 @@
+---
+## sconnin - "R_Homework_1"
+
+output: html_document
+---
+## S. Connin - "R_Homework_1"
+
+## Problem 1.
+
+Write a loop that calculates 12-factorial
+
+```{r}
+
+twlv_factorial <- function(x) # create factorial function
+{
+  factr <- 1 # initialize value
+  
+  if((x==0)|(x==1)) # conditional if|or statement, loop not required
+    factr <-1
+  
+  else{
+    for(i in 1:x) # loop to increment factorial multiplication, 
+      factr <- factr*i
+  }
+  
+  print(factr)
+}
+
+twlv_factorial(12)
+
+```
+
+## Problem 2.
+
+Show how to create a numeric vector that contains the sequence from 20 to 50 by 5.
+```{r}
+vseq <- seq(20,50, by=5) # apply sequence function and step value.
+
+# Note we can also run as  c(seq(20,50, by=5))
+
+vseq # print the sequence
+
+is.vector(vseq) # check that seq produces a vector
+
+class(vseq) # confirm numeric type -- stating the obvious
+
+```
+## Problem 3.
+
+Create the function “quadratic” that takes a trio of input numbers a, b, and c and solve the quadratic equation. The function should print as output the two solutions.
+
+soln1 x1 = -b+sqrt(b^2-4ac)/2a
+
+soln2 x2 = -b-sqrt(b^2-4ac)/2a
+
+```{r}
+
+# The genl form for a quadratic equation is --> ax^2 +bx +c
+
+
+quad_soln <- function(a, b, c)
+  {
+  
+  # assign variables to simplify code
+  
+  discriminant <- (b^2)-(4*a*c) 
+  denominator = 2*a
+  
+  # apply conditional requirements
+  
+  if(discriminant > 0){
+  intercept1 <- (-b+sqrt(discriminant))/denominator
+  intercept2 <- (-b-sqrt(discriminant))/denominator
+  print(intercept1)
+  print(intercept2)
+  }
+  else if(discriminant < 0){
+  
+  print('Equation is undefined due to square root of negative')
+  } 
+  else{ # discriminant = 0, 
+    intercept <- (-b/denominator)
+  print(intercept)
+  }
+}
+
+quad_soln(1,7,5)
+```
