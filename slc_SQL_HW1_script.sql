@@ -4,7 +4,9 @@ FROM flights;
 /*Q1*/
 
 SELECT origin AS origin_airport, dest AS destination_airport, MAX(distance) AS farthest_distance
-FROM flights;
+FROM flights
+GROUP BY destination_airport
+ORDER BY farthest_distance;
 
 SELECT *
 FROM planes;
@@ -14,7 +16,7 @@ FROM planes;
 SELECT manufacturer, model, engines, MAX(seats) AS max_seats_by_engine
 FROM planes
 GROUP BY engines
-ORDER BY engines desc;
+ORDER BY max_seats_by_engine DESC;
 
 /*Q3*/
 SELECT COUNT(*)
@@ -53,7 +55,7 @@ write down both the question, and the query that answers the question.
 
 Which 2 of the 3 airports boast the highest average departure delays? */
 
-SELECT 
+SELECT
 CASE origin
 WHEN 'LGA' THEN 'LaGuardia'
 WHEN 'JFK' THEN 'John F Kennedy'
